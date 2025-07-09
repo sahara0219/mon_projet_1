@@ -19,4 +19,4 @@ st.write("Start time:", start_time)
 import pandas as pd
 vehiculos = pd.read_csv("vehicles_us (1).csv") 
 st.title("vehiculos en estados unidos")
-st.dataframe(veiculos)
+st.dataframe(vehiculos)
