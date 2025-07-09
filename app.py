@@ -15,3 +15,8 @@ start_time = st.slider(
 )
 
 st.write("Start time:", start_time)
+
+import pandas as pd
+veiculos = pd.read_csv("vehicles_us (1).csv") 
+st.title("veiculos en estados unidos")
+st.dataframe(veiculos)
