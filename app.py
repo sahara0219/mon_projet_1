@@ -1,6 +1,11 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
+import plotly.express as px
+
+
+
+
+
 
 
 
@@ -23,16 +28,10 @@ st.write("Start time:", start_time)
 
 
 vehiculos = pd.read_csv("vehicles_us (1).csv") #lectura del archivo csv
-fig, ax = plt.subplots()
 
-ax.hist(vehiculos['price'], bins=20, color='skyblue', edgecolor='black')
+fig = px.histogram(vehiculos, x="price", nbins=20, title="Distribución de Precios")
 
-ax.set_title('Distribución de Precios')
-
-ax.set_xlabel('Precio')
-
-ax.set_ylabel('Frecuencia')
-st.pyplot(fig)
+st.plotly_chart(fig)
  
 
 hist_button = st.button('Construir histograma')
