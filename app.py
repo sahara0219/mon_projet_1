@@ -1,5 +1,9 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
+
+
+
 
 from datetime import datetime
 
@@ -19,7 +23,18 @@ st.write("Start time:", start_time)
 
 
 vehiculos = pd.read_csv("vehicles_us (1).csv") #lectura del archivo csv
-st.bar_chart(vehiculos, x="model", y="price", color="site", stack=False)
+fig, ax = plt.subplots()
+
+ax.hist(vehiculos['price'], bins=20, color='skyblue', edgecolor='black')
+
+ax.set_title('Distribución de Precios')
+
+ax.set_xlabel('Precio')
+
+ax.set_ylabel('Frecuencia')
+st.pyplot(fig)
+ 
+
 hist_button = st.button('Construir histograma')
 vehiculos = vehiculos.dropna() #eliminacion de los valores nulos 
 vehiculos.colums = vehiculos.columns.str.lower().str.replace(" ", "_") #cambio de nombre de las columnas
