@@ -19,7 +19,7 @@ st.write("Start time:", start_time)
 
 
 vehiculos = pd.read_csv("vehicles_us (1).csv") #lectura del archivo csv
-st.bar_chart(vehiculos, x="model ", y="price", color="site", stack=False)
+st.bar_chart(vehiculos, x="model", y="price", color="site", stack=False)
 hist_button = st.button('Construir histograma')
 vehiculos = vehiculos.dropna() #eliminacion de los valores nulos 
 vehiculos.colums = vehiculos.columns.str.lower().str.replace(" ", "_") #cambio de nombre de las columnas
