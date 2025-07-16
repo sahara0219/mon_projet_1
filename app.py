@@ -40,12 +40,12 @@ st.plotly_chart(fig)
 hist_button = st.button('Construir histograma')
 fig_t = px.histogram(vehiculos, x="transmission", nbins=20, title="Distribución de Transmisiones ")
 
-st.plotly_chart(fig)
+st.plotly_chart(fig_t)
  
 hist_button = st.button('Construir histograma') 
 fig_p = px.histogram(vehiculos, x="price", nbins=20, title="Distribución de Precios")
 
-st.plotly_chart(fig)
+st.plotly_chart(fig_p)
  
 vehiculos = vehiculos.dropna() #eliminacion de los valores nulos 
 vehiculos.colums = vehiculos.columns.str.lower().str.replace(" ", "_") #cambio de nombre de las columnas
