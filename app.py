@@ -29,12 +29,24 @@ st.write("Start time:", start_time)
 
 vehiculos = pd.read_csv("vehicles_us (1).csv") #lectura del archivo csv
 
-fig = px.histogram(vehiculos, x="price", nbins=20, title="Distribución de Precios")
 
-st.plotly_chart(fig)
  
 
 hist_button = st.button('Construir histograma')
+fig = px.histogram(vehiculos, x="model_year", nbins=20, title="Distribución de Años de los Vehiculos ")
+
+st.plotly_chart(fig)
+
+hist_button = st.button('Construir histograma')
+fig_t = px.histogram(vehiculos, x="transmission", nbins=20, title="Distribución de Transmisiones ")
+
+st.plotly_chart(fig)
+ 
+hist_button = st.button('Construir histograma') 
+fig_p = px.histogram(vehiculos, x="price", nbins=20, title="Distribución de Precios")
+
+st.plotly_chart(fig)
+ 
 vehiculos = vehiculos.dropna() #eliminacion de los valores nulos 
 vehiculos.colums = vehiculos.columns.str.lower().str.replace(" ", "_") #cambio de nombre de las columnas
 
