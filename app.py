@@ -29,20 +29,19 @@ st.write("Start time:", start_time)
 
 vehiculos = pd.read_csv("vehicles_us (1).csv") #lectura del archivo csv
 
-
+#como puedo crear un boton para crear diferentes histogramas con los datos mas relevantes de los vehiculos para una mejor visualizacion de los resultados
  
 
-hist_button = st.button('Construir histograma')
-fig = px.histogram(vehiculos, x="model_year", nbins=20, title="Distribución de Años de los Vehiculos ")
+if st.button('Construir histograma',key ='1'):
+    fig = px.histogram(vehiculos, x="model_year", nbins=20, title="Distribución de Años de los Vehiculos ")
+    st.plotly_chart(fig)
 
-st.plotly_chart(fig)
-
-hist_button = st.button('Construir histograma')
+hist_button_2 = st.button('Construir histograma',key ='2')
 fig_t = px.histogram(vehiculos, x="transmission", nbins=20, title="Distribución de Transmisiones ")
 
 st.plotly_chart(fig_t)
  
-hist_button = st.button('Construir histograma') 
+hist_button_3 = st.button('Construir histograma', key ='3') 
 fig_p = px.histogram(vehiculos, x="price", nbins=20, title="Distribución de Precios")
 
 st.plotly_chart(fig_p)
@@ -63,3 +62,6 @@ st.write("Total de marcas:", vehiculos['model'].nunique()) # total de marcas
 st.write("Total de modelos:", vehiculos['model_year'].nunique()) #total de modelos 
 st.write("Total de tipos de combustible:", vehiculos['fuel'].nunique()) #total de tipos de combustible
 st.write("tipos de trasmision:", vehiculos['transmission'].nunique()) #total de tipos de trasmision
+
+hist_button_2 = st.button('Construir bar 2')
+fig_4 = px.bar(vehiculos, x='model', y='')
