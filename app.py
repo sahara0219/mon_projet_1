@@ -1,53 +1,9 @@
-import streamlit as st
-import pandas as pd
+import pandas as pd 
 import plotly.express as px
+import plotly.graph_objects as go 
+import streamlit as st 
 
-
-
-
-
-
-
-
-
-from datetime import datetime
-
- 
-
-start_time = st.slider(
-
-    "When do you start?",
-
-    value=datetime(2020, 1, 1, 9, 30),
-
-    format="MM/DD/YY - hh:mm",
-
-)
-
-st.write("Start time:", start_time)
-
-
-vehiculos = pd.read_csv("vehicles_us (1).csv") #lectura del archivo csv
-
-#como puedo crear un boton para crear diferentes histogramas con los datos mas relevantes de los vehiculos para una mejor visualizacion de los resultados
- 
-
-if st.button('Construir histograma',key ='1'):
-    fig = px.histogram(vehiculos, x="model_year", nbins=20, title="Distribución de Años de los Vehiculos ")
-    st.plotly_chart(fig)
-
-hist_button_2 = st.button('Construir histograma',key ='2')
-fig_t = px.histogram(vehiculos, x="transmission", nbins=20, title="Distribución de Transmisiones ")
-
-st.plotly_chart(fig_t)
- 
-hist_button_3 = st.button('Construir histograma', key ='3') 
-fig_p = px.histogram(vehiculos, x="price", nbins=20, title="Distribución de Precios")
-
-st.plotly_chart(fig_p)
- 
-vehiculos = vehiculos.dropna() #eliminacion de los valores nulos 
-vehiculos.colums = vehiculos.columns.str.lower().str.replace(" ", "_") #cambio de nombre de las columnas
+car_data = pd.read_csv('vehicles_us (1).csv',sep=',') # Se lee el archivo CSV con los datos de los vehiculos
 
 st.title("Analisis de Vehiculos en Estados Unidos (2019-2020)") #titulo de la aplicacion
 
@@ -56,12 +12,26 @@ st.write("Eeste es un analisis de los vehiculos en Estados Unidos durante los a�
 
 st.subheader("Datos de los vehiculos") #subtitulos de la aplicacion
 
-st.dataframe(vehiculos) #visualizacion de los datos en un dataframe 
-st.write("Tolal de vehiculos:", len(vehiculos)) #total de vehiculos 
-st.write("Total de marcas:", vehiculos['model'].nunique()) # total de marcas 
-st.write("Total de modelos:", vehiculos['model_year'].nunique()) #total de modelos 
-st.write("Total de tipos de combustible:", vehiculos['fuel'].nunique()) #total de tipos de combustible
-st.write("tipos de trasmision:", vehiculos['transmission'].nunique()) #total de tipos de trasmision
+st.dataframe(car_data) #visualizacion de los datos en un dataframe 
+st.write("Tolal de vehiculos:", len(car_data)) #total de vehiculos 
+st.write("Total de marcas:", car_data['model'].nunique()) # total de marcas 
+st.write("Total de modelos:", car_data['model_year'].nunique()) #total de modelos 
+st.write("Total de tipos de combustible:", car_data['fuel'].nunique()) #total de tipos de combustible
+st.write("tipos de trasmision:", car_data['transmission'].nunique()) #total de tipos de trasmision
 
-hist_button_2 = st.button('Construir bar 2')
-fig_4 = px.bar(vehiculos, x='model', y='')
+
+if st.button('Construir histograma',key ='1'):
+   st.write('Creación de un histograma para el conjunto de datos de anuncios de venta de coches')
+   fig = go.Figure(data=[go.Histogram(x=car_data['odometer'])]) # Crear un histograma utilizando plotly.graph_objects
+# Se crea una figura vacía y luego se añade un rastro de histograma
+   fig.update_layout(title_text='Distribución del Odómetro') # Opcional: Puedes añadir un título al gráfico si lo deseas
+   st.plotly_chart(fig, use_container_width=True) # Mostrar el gráfico Plotly interactivo en la aplicación Streamlit
+    # 'use_container_width=True' ajusta el ancho del gráfico al contenedor
+   st.plotly_chart(fig, use_container_width=True)
+   fig.show()# Mostrar el gráfico Plotly
+
+hist_button_2 = st.button('Construir grafico de dispercion',key ='2')
+fig = go.Figure(data=[go.Scatter(x=car_data['odometer'], y=car_data['price'], mode='markers')]) # Crear un scatter plot utilizando plotly.graph_objects
+# Se crea una figura vacía y luego se añade un rastro de scatter
+fig.update_layout(title_text='Relación entre Odómetro y Precio') # Opcional: Puedes añadir un título al gráfico si lo deseas
+fig.show() # Mostrar el gráfico Plotly
