@@ -30,8 +30,8 @@ if st.button('Construir histograma',key ='1'):
    st.plotly_chart(fig, use_container_width=True)
    fig.show()# Mostrar el gráfico Plotly
 
-hist_button_2 = st.button('Construir grafico de dispercion',key ='2')
-fig = go.Figure(data=[go.Scatter(x=car_data['odometer'], y=car_data['price'], mode='markers')]) # Crear un scatter plot utilizando plotly.graph_objects
+if st.button('Construir grafico de dispercion',key ='2'):
+   fig = go.Figure(data=[go.Scatter(x=car_data['odometer'], y=car_data['price'], mode='markers')]) # Crear un scatter plot utilizando plotly.graph_objects
 # Se crea una figura vacía y luego se añade un rastro de scatter
-fig.update_layout(title_text='Relación entre Odómetro y Precio') # Opcional: Puedes añadir un título al gráfico si lo deseas
-fig.show() # Mostrar el gráfico Plotly
+   fig.update_layout(title_text='Relación entre Odómetro y Precio') # Opcional: Puedes añadir un título al gráfico si lo deseas
+   fig.show() # Mostrar el gráfico Plotly
