@@ -25,10 +25,8 @@ if st.button('Construir histograma',key ='1'):
    fig = go.Figure(data=[go.Histogram(x=car_data['odometer'])]) # Crear un histograma utilizando plotly.graph_objects
 # Se crea una figura vacía y luego se añade un rastro de histograma
    fig.update_layout(title_text='Distribución del Odómetro') # Opcional: Puedes añadir un título al gráfico si lo deseas
-   st.plotly_chart(fig, use_container_width=True) # Mostrar el gráfico Plotly interactivo en la aplicación Streamlit
-    # 'use_container_width=True' ajusta el ancho del gráfico al contenedor
-   st.plotly_chart(fig, use_container_width=True)
-   fig.show()# Mostrar el gráfico Plotly
+
+   st.plotly_chart(fig, use_container_width=True, key="1")()# Mostrar el gráfico Plotly
 
 build_dis = st.checkbox('Construir grafico de dispersion', value=False)# checkbox para controlar la construccion del grafico de dispersion
 
