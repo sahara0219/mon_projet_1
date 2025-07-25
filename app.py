@@ -20,13 +20,13 @@ st.write("Total de tipos de combustible:", car_data['fuel'].nunique()) #total de
 st.write("tipos de trasmision:", car_data['transmission'].nunique()) #total de tipos de trasmision
 
 
-if st.button('Construir histograma',key ='histograma'):
+if st.button('Construir histograma',key ='histograma_button'):
    st.write('Creación de un histograma para el conjunto de datos de anuncios de venta de coches')
    fig = go.Figure(data=[go.Histogram(x=car_data['odometer'])]) # Crear un histograma utilizando plotly.graph_objects
 # Se crea una figura vacía y luego se añade un rastro de histograma
    fig.update_layout(title_text='Distribución del Odómetro') # Opcional: Puedes añadir un título al gráfico si lo deseas
 
-   st.plotly_chart(fig, use_container_width=True, key="histograma")()# Mostrar el gráfico Plotly
+   st.plotly_chart(fig, use_container_width=True, key="histograma_button_1")# Mostrar el gráfico Plotly
 
 build_dis = st.checkbox('Construir grafico de dispersion', value=False)# checkbox para controlar la construccion del grafico de dispersion
 
