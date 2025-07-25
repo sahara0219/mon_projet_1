@@ -30,10 +30,11 @@ if st.button('Construir histograma',key ='1'):
    st.plotly_chart(fig, use_container_width=True)
    fig.show()# Mostrar el gráfico Plotly
 
-build_dis = st.checkbox('Construir grafico de dispersion', value=False)
+build_dis = st.checkbox('Construir grafico de dispersion', value=False)# checkbox para controlar la construccion del grafico de dispersion
 
 if build_dis:
    st.write('creacion de un grafico de dispersion para el conjunto de datos de anuncios de ventas de cohces')
+   st.write('Este grafico muestra la relacion entre el odometro y el precio de los vehiculos')
 
    fig_2= go.Figure(data=[go.Scatter(x=car_data['odometer'], y=car_data['price'], mode='markers')]) # Crear un scatter plot utilizando plotly.graph_objects
 # Se crea una figura vacía y luego se añade un rastro de scatter
