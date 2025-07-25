@@ -39,4 +39,4 @@ if build_dis:
    fig_2= go.Figure(data=[go.Scatter(x=car_data['odometer'], y=car_data['price'], mode='markers')]) # Crear un scatter plot utilizando plotly.graph_objects
 # Se crea una figura vacía y luego se añade un rastro de scatter
    fig_2.update_layout(title_text='Relación entre Odómetro y Precio') # Opcional: Puedes añadir un título al gráfico si lo deseas
-   fig_2.show() # Mostrar el gráfico Plotly
+   st.plotly_chart(fig_2, use_container_width=True, key="grafico_dispersion")# Mostrar el gráfico Plotly
